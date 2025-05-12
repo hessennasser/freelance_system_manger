@@ -18,8 +18,6 @@ CREATE TABLE users (
   updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
-CREATE INDEX idx_users_email ON users(email);
-
 CREATE TABLE user_profiles (
   user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
   headline VARCHAR(100),
@@ -44,9 +42,6 @@ CREATE TABLE projects (
   updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
-CREATE INDEX idx_projects_client ON projects(client_id);
-CREATE INDEX idx_projects_status ON projects(status);
-
 CREATE TABLE bids (
   id SERIAL PRIMARY KEY,
   project_id INTEGER NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
@@ -59,8 +54,6 @@ CREATE TABLE bids (
   updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
   UNIQUE(project_id, freelancer_id)
 );
-
-CREATE INDEX idx_bids_project ON bids(project_id);
 
 CREATE TABLE contracts (
   id SERIAL PRIMARY KEY,
@@ -78,8 +71,6 @@ CREATE TABLE contracts (
   updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
   completed_at TIMESTAMP
 );
-
-CREATE INDEX idx_contracts_status ON contracts(status);
 
 CREATE TABLE reviews (
   id SERIAL PRIMARY KEY,
@@ -101,8 +92,6 @@ CREATE TABLE messages (
   is_read BOOLEAN NOT NULL DEFAULT FALSE,
   created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
-
-CREATE INDEX idx_messages_receiver ON messages(receiver_id);
 
 -- Add trigger to automatically update the updated_at field
 CREATE OR REPLACE FUNCTION update_modified_column()

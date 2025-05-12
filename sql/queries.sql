@@ -129,7 +129,7 @@ WITH project_skills AS (
     FROM 
         projects
     WHERE 
-        id = 123  -- Replace with specific project ID
+        id = 123
 )
 SELECT 
     u.id,
@@ -145,8 +145,6 @@ JOIN
     user_profiles up ON u.id = up.user_id
 JOIN 
     project_skills ps ON 
-        -- Check if any of the project's required skills match with freelancer's skills
-        -- This uses a simplified string matching technique
         LOWER(up.skills) LIKE '%' || ps.skills_required || '%'
 WHERE 
     u.role = 'freelancer'

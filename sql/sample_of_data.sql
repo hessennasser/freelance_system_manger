@@ -30,11 +30,6 @@ INSERT INTO bids (project_id, freelancer_id, amount, duration_days, proposal, st
 INSERT INTO contracts (project_id, bid_id, client_id, freelancer_id, title, description, amount, start_date, end_date, status) VALUES
 (2, 2, 1, 4, 'Fitness App UI Design Project', 'Design of complete UI for iOS and Android fitness tracking application', 1800.00, '2025-04-15', '2025-04-29', 'active');
 
--- Sample data for reviews (after contract completion)
--- This assumes the contract with ID 1 was completed
--- INSERT INTO reviews (contract_id, reviewer_id, reviewee_id, rating, comment) VALUES
--- (1, 1, 4, 5, 'Lisa delivered exceptional designs that exceeded my expectations. Very professional and responsive.');
-
 -- Sample data for messages table
 INSERT INTO messages (sender_id, receiver_id, project_id, message, is_read) VALUES
 (1, 4, 2, 'Hi Lisa, just checking in on the progress of the UI designs. Any updates?', false),

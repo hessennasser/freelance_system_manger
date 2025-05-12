@@ -60,15 +60,6 @@ SELECT
     c.end_date,
     c.status AS contract_status,
     
-    -- Duration metrics
-    CASE 
-        WHEN c.completed_at IS NOT NULL THEN 
-            c.completed_at::DATE - c.start_date
-        WHEN c.status = 'active' THEN 
-            CURRENT_DATE - c.start_date
-        ELSE NULL
-    END AS days_duration,
-    
     -- Financial metrics
     p.budget_min,
     p.budget_max,
